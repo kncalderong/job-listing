@@ -12,28 +12,28 @@ datasource db {
 }
 
 model Job {
-  id        String      @id @default(uuid())
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
+  id        String     @id @default(uuid())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
   company   String
   logo      String
   new       Boolean
   featured  Boolean
   position  String
   role      String
-  level     Level       @default(Junior)
+  level     Level      @default(Junior)
   postedAt  String
   contract  String
   location  String
-  languages Lenguages[]
+  languages Language[]
   tools     String[]
 }
 
-model Lenguages {
-  id    String @id @default(uuid())
+model Language {
+  id    String  @id @default(uuid())
   name  String
-  job   Job    @relation(fields: [jobId], references: [id])
-  jobId String
+  job   Job?    @relation(fields: [jobId], references: [id])
+  jobId String?
 }
 
 enum Level {

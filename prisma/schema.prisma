@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Job {
+  id        String      @id @default(uuid())
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  company   String
+  logo      String
+  new       Boolean
+  featured  Boolean
+  position  String
+  role      String
+  level     Level       @default(Junior)
+  postedAt  String
+  contract  String
+  location  String
+  languages Lenguages[]
+  tools     String[]
+}
+
+model Lenguages {
+  id    String @id @default(uuid())
+  name  String
+  job   Job    @relation(fields: [jobId], references: [id])
+  jobId String
+}
+
+enum Level {
+  Senior
+  Mid
+  Junior
+}

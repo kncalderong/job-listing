@@ -15,3 +15,9 @@ body {
   font-size: 15px;
   font-weight: 500;
 }
+
+@layer base {
+  * {
+    @apply font-league-spartan;
+  }
+}

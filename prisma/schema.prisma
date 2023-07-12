@@ -30,10 +30,9 @@ model Job {
 }
 
 model Language {
-  id    String  @id @default(uuid())
-  name  String
-  job   Job?    @relation(fields: [jobId], references: [id])
-  jobId String?
+  id   String @id @default(uuid())
+  name String
+  jobs Job[]
 }
 
 enum Level {

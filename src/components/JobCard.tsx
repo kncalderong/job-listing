@@ -1,28 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-
-type JobCardProps = {
-  id: string
-  createdAt: Date
-  updatedAt: Date
-  company: string
-  logo: string
-  isNew: boolean
-  featured: boolean
-  position: string
-  role: string
-  level: string
-  postedAt: string
-  contract: string
-  location: string
-  tools: string[]
-  languages: languageType[]
-}
-
-interface languageType {
-  id: string
-  name: string
-}
+import { JobType } from '@/types/Job'
 
 const JobCard = ({
   company,
@@ -37,7 +15,7 @@ const JobCard = ({
   tools,
   languages,
   isNew,
-}: JobCardProps) => {
+}: JobType) => {
   return (
     <div className='relative p-6 rounded-md bg-white shadow-lg w-full'>
       <div className='like-before absolute h-full w-[5px] left-0 top-0 bg-desaturated-dark-cyan rounded-tl-md rounded-bl-md'></div>

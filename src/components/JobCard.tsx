@@ -22,7 +22,7 @@ const JobCard = ({
       <div className='like-before absolute h-full w-[5px] left-0 top-0 bg-desaturated-dark-cyan rounded-tl-md rounded-bl-md'></div>
       <div className='imageContainer relative rounded-full overflow-hidden w-[48px] h-[48px] mt-[-48px] mb-4'>
         <Image
-          src={`${logo}`}
+          src={`${logo ? logo : ''}`}
           alt={`${company}-logo`}
           fill={true}
           style={{ objectFit: 'cover' }}
@@ -74,7 +74,7 @@ const JobCard = ({
         >
           {level}
         </div>
-        {tools.map((tool) => {
+        {tools?.map((tool) => {
           return (
             <div
               className='bg-light-bg-grayish-cyan text-desaturated-dark-cyan p-2 rounded-md font-bold'
@@ -90,7 +90,7 @@ const JobCard = ({
             </div>
           )
         })}
-        {languages.map((language) => {
+        {languages?.map((language) => {
           return (
             <div
               className='bg-light-bg-grayish-cyan text-desaturated-dark-cyan p-2 rounded-md font-bold'

@@ -6,16 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import JobCard from '@/components/JobCard'
 import getJobs from '../../utils/getJobs'
+import Spinner from '@/components/Spinner'
 
 export default function Home() {
   //this is called on the server because the whole component is server-side rendering
-  /* const jobs = await queryJobs() */
 
   const [filters, setFilters] = useState<FilterType[]>([])
   const [jobs, setJobs] = useState<any>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const toggleFilters = (filter: FilterType) => {
-    console.log('this is executing')
     const newFilters = [...filters]
     const index = filters.findIndex((element) => {
       return element.name === filter.name
@@ -31,8 +31,10 @@ export default function Home() {
 
   useEffect(() => {
     ;(async () => {
-      const jobs = await getJobs()
+      setIsLoading(true)
+      const jobs = await getJobs([...filters])
       setJobs(jobs)
+      setIsLoading(false)
     })()
   }, [filters])
 
@@ -72,16 +74,20 @@ export default function Home() {
           </div>
         </div>
       )}
-      {jobs.map((job: JobType) => {
-        return (
-          <JobCard
-            isNew={job.new}
-            {...job}
-            key={job.id}
-            toggleFilters={toggleFilters}
-          />
-        )
-      })}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        jobs.map((job: JobType) => {
+          return (
+            <JobCard
+              isNew={job.new}
+              {...job}
+              key={job.id}
+              toggleFilters={toggleFilters}
+            />
+          )
+        })
+      )}
     </main>
   )
 }

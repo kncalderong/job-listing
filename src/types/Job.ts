@@ -1,4 +1,4 @@
-export type JobType = {
+export interface JobType {
   id: string
   createdAt: Date
   updatedAt: Date
@@ -15,6 +15,10 @@ export type JobType = {
   location: string
   tools: string[]
   languages: languageType[]
+}
+
+export interface JobTypeWithToggle extends JobType {
+  toggleFilters: (filter: FilterType) => void
 }
 
 export interface languageType {

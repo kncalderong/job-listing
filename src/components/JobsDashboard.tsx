@@ -11,23 +11,8 @@ type JobsDashboardProps = {
   queryJobs: (filters?: FilterType[]) => Promise<JobType[]>
 }
 
-const initialFilters = [
-  {
-    name: 'Frontend',
-    type: 'language',
-  },
-  {
-    name: 'CSS',
-    type: 'language',
-  },
-  {
-    name: 'Javascript',
-    type: 'language',
-  },
-]
-
 const JobsDashboard = ({ jobs, queryJobs }: JobsDashboardProps) => {
-  const [filters, setFilters] = useState<FilterType[]>(initialFilters)
+  const [filters, setFilters] = useState<FilterType[]>([])
 
   const toggleFilters = (filter: FilterType) => {
     console.log('this is executing')
@@ -43,12 +28,6 @@ const JobsDashboard = ({ jobs, queryJobs }: JobsDashboardProps) => {
     }
     setFilters(newFilters)
   }
-  useEffect(() => {
-    /* toggleFilters({
-      name: 'CSS',
-      type: 'language',
-    }) */
-  }, [])
 
   /* useEffect(() => {
     queryJobs([
@@ -74,7 +53,10 @@ const JobsDashboard = ({ jobs, queryJobs }: JobsDashboardProps) => {
                   <div className='p-2 bg-light-bg-grayish-cyan text-desaturated-dark-cyan  text-base font-bold'>
                     {filter.name}
                   </div>
-                  <div className='h-full w-[32px] bg-desaturated-dark-cyan cursor-pointer font-bold flex justify-center items-center '>
+                  <div
+                    className='h-full w-[32px] bg-desaturated-dark-cyan cursor-pointer font-bold flex justify-center items-center '
+                    onClick={() => toggleFilters(filter)}
+                  >
                     <FontAwesomeIcon
                       icon={faXmark}
                       color={'#fff'}
@@ -85,13 +67,23 @@ const JobsDashboard = ({ jobs, queryJobs }: JobsDashboardProps) => {
               )
             })}
           </div>
-          <div className='text-[16px] font-bold text-dark-grayish-cyan'>
+          <div
+            className='text-[16px] font-bold text-dark-grayish-cyan'
+            onClick={() => setFilters([])}
+          >
             Clear
           </div>
         </div>
       )}
       {jobs.map((job) => {
-        return <JobCard isNew={job.new} {...job} key={job.id} />
+        return (
+          <JobCard
+            isNew={job.new}
+            {...job}
+            key={job.id}
+            toggleFilters={toggleFilters}
+          />
+        )
       })}
     </>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { JobType } from '@/types/Job'
+import { JobTypeWithToggle } from '@/types/Job'
 
 const JobCard = ({
   company,
@@ -15,7 +15,8 @@ const JobCard = ({
   tools,
   languages,
   isNew,
-}: JobType) => {
+  toggleFilters,
+}: JobTypeWithToggle) => {
   return (
     <div className='relative p-6 rounded-md bg-white shadow-lg w-full'>
       <div className='like-before absolute h-full w-[5px] left-0 top-0 bg-desaturated-dark-cyan rounded-tl-md rounded-bl-md'></div>
@@ -51,10 +52,26 @@ const JobCard = ({
         <div className='text-dark-grayish-cyan text-[16px]'>{location}</div>
       </div>
       <div className='flex flex-wrap gap-4'>
-        <div className='bg-light-bg-grayish-cyan text-desaturated-dark-cyan p-2 rounded-md font-bold'>
+        <div
+          className='bg-light-bg-grayish-cyan text-desaturated-dark-cyan p-2 rounded-md font-bold'
+          onClick={() =>
+            toggleFilters({
+              name: role,
+              type: 'role',
+            })
+          }
+        >
           {role}
         </div>
-        <div className='bg-light-bg-grayish-cyan text-desaturated-dark-cyan p-2 rounded-md font-bold'>
+        <div
+          className='bg-light-bg-grayish-cyan text-desaturated-dark-cyan p-2 rounded-md font-bold'
+          onClick={() =>
+            toggleFilters({
+              name: level,
+              type: 'level',
+            })
+          }
+        >
           {level}
         </div>
         {tools.map((tool) => {
@@ -62,6 +79,12 @@ const JobCard = ({
             <div
               className='bg-light-bg-grayish-cyan text-desaturated-dark-cyan p-2 rounded-md font-bold'
               key={tool}
+              onClick={() =>
+                toggleFilters({
+                  name: tool,
+                  type: 'tools',
+                })
+              }
             >
               {tool}
             </div>
@@ -72,6 +95,12 @@ const JobCard = ({
             <div
               className='bg-light-bg-grayish-cyan text-desaturated-dark-cyan p-2 rounded-md font-bold'
               key={language.id}
+              onClick={() =>
+                toggleFilters({
+                  name: language.name,
+                  type: 'languages',
+                })
+              }
             >
               {language.name}
             </div>

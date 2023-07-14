@@ -4,9 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'github.com',
-        port: '',
-        pathname: '/kncalderong/job-listing/assets/**',
+        hostname: '**',
       },
     ],
     dangerouslyAllowSVG: true,

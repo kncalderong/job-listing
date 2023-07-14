@@ -19,7 +19,9 @@ const JobCard = ({
 }: JobTypeWithToggle) => {
   return (
     <div className='relative p-6 rounded-md bg-white shadow-lg w-full flex flex-col lg:flex-row lg:justify-between lg:max-w-[1110px] lg:px-10 lg:py-7'>
-      <div className='like-before absolute h-full w-[5px] left-0 top-0 bg-desaturated-dark-cyan rounded-tl-md rounded-bl-md'></div>
+      {featured && (
+        <div className='like-before absolute h-full w-[5px] left-0 top-0 bg-desaturated-dark-cyan rounded-tl-md rounded-bl-md'></div>
+      )}
       <div className='lg:flex lg:gap-6 lg:items-center'>
         <div className='imageContainer relative rounded-full overflow-hidden w-[48px] h-[48px] mt-[-48px] mb-4 lg:mb-0 lg:w-[88px] lg:h-[88px] lg:mt-0'>
           <Image
@@ -30,7 +32,7 @@ const JobCard = ({
           />
         </div>
         <div>
-          <div className='flex justify-start items-center mb-3'>
+          <div className='flex justify-start items-center mb-3 flex-wrap'>
             <div className='company text-desaturated-dark-cyan font-bold mr-8 lg:text-lg'>
               {company}
             </div>

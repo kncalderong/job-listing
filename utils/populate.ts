@@ -175,23 +175,23 @@ const nine = {
 }
 
 const ten = {
-  company: 'The Air Filter Company',
-  logo: 'https://github.com/kncalderong/job-listing/assets/80135017/3f37925d-eb14-4287-88b7-4907465e038f',
-  new: false,
-  featured: false,
-  position: 'Front-end Dev',
-  role: 'Frontend',
-  level: 'Junior',
-  postedAt: '1mo ago',
-  contract: 'Part Time',
-  location: 'Worldwide',
+  company: 'The Air Filter Company', //
+  logo: 'https://github.com/kncalderong/job-listing/assets/80135017/3f37925d-eb14-4287-88b7-4907465e038f', //
+  new: false, //default true
+  featured: false, //default true
+  position: 'Front-end Dev', //
+  role: 'Frontend', //Frontend Fullstack Backend
+  level: 'Junior', //Junior Mid Senior
+  postedAt: '1mo ago', //default now
+  contract: 'Part Time', // Full Time - Part Time - Contract
+  location: 'Worldwide', //
   languages: {
     connect: [{ id: 'fb26eb9c-4713-4e1a-860b-7027c1024d87' }],
   },
-  tools: ['React', 'Sass'],
+  tools: ['React', 'Sass'], // options to add: React Sass Ruby RoR Django Vue
 }
 
-const languages = [
+export const languages = [
   {
     id: '63f130c5-2e63-44b3-b25b-b4918ef590c2',
     name: 'Python',

@@ -33,7 +33,10 @@ export default function NewJobPage() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <form action={submitNewJob} className='w-5/6 flex flex-col gap-5 py-6'>
+        <form
+          action={submitNewJob}
+          className='w-5/6 flex flex-col gap-5 py-6 lg:max-w-[800px] lg:gap-8'
+        >
           <FormRow label='Company' name='company' type='text' />
           <FormRow label='Company Logo (url)' name='logo' type='text' />
           <FormRow label='Job Position' name='position' type='text' />
@@ -54,7 +57,7 @@ export default function NewJobPage() {
           />
           <FormRow label='Location' name='location' type='text' />
           <div className='w-full flex flex-col gap-2'>
-            <p className='text-desaturated-dark-cyan font-bold'>
+            <p className='text-desaturated-dark-cyan font-bold lg:text-lg'>
               Select the languages required for this position
             </p>
             <div className='flex flex-wrap w-full gap-4'>
@@ -62,7 +65,7 @@ export default function NewJobPage() {
                 return (
                   <div
                     key={language.id}
-                    className='p-3 leading-[initial] flex justify-center items-center rounded-full bg-light-bg-grayish-cyan text-desaturated-dark-cyan border-[1px] border-desaturated-dark-cyan gap-3 h-8'
+                    className='p-3 leading-[initial] flex justify-center items-center rounded-full bg-light-bg-grayish-cyan text-desaturated-dark-cyan border-[1px] border-desaturated-dark-cyan gap-3 h-8 lg:h-[36px]'
                     onClick={() => {
                       const index = selectedLanguages.findIndex(
                         (languageQuery) => language.name === languageQuery.name
@@ -77,7 +80,9 @@ export default function NewJobPage() {
                       }
                     }}
                   >
-                    <p className='font-bold'>{language.name}</p>
+                    <p className='font-bold lg:text-lg lg:leading-[initial]'>
+                      {language.name}
+                    </p>
                     <div className='rounded-full border-[1px] border-desaturated-dark-cyan w-5 h-5 bg-white flex justify-center items-center '>
                       {selectedLanguages.findIndex(
                         (languageQuery) => language.name === languageQuery.name
@@ -89,7 +94,7 @@ export default function NewJobPage() {
             </div>
           </div>
           <div className='w-full flex flex-col gap-2 mb-6'>
-            <p className='text-desaturated-dark-cyan font-bold'>
+            <p className='text-desaturated-dark-cyan font-bold lg:text-lg'>
               Select the possible tools required for this position
             </p>
             <div className='flex flex-wrap w-full gap-4'>
@@ -97,7 +102,7 @@ export default function NewJobPage() {
                 return (
                   <div
                     key={idx}
-                    className='p-3 leading-[initial] flex justify-center items-center rounded-full bg-light-bg-grayish-cyan text-desaturated-dark-cyan border-[1px] border-desaturated-dark-cyan gap-3 h-8'
+                    className='p-3 leading-[initial] flex justify-center items-center rounded-full bg-light-bg-grayish-cyan text-desaturated-dark-cyan border-[1px] border-desaturated-dark-cyan gap-3 h-8 lg:h-[36px]'
                     onClick={() => {
                       const index = selectedTools.indexOf(tool)
                       if (index === -1) {
@@ -110,7 +115,9 @@ export default function NewJobPage() {
                       }
                     }}
                   >
-                    <p className='font-bold'>{tool}</p>
+                    <p className='font-bold lg:text-lg lg:leading-[initial]'>
+                      {tool}
+                    </p>
                     <div className='rounded-full border-[1px] border-desaturated-dark-cyan w-5 h-5 bg-white flex justify-center items-center '>
                       {selectedTools.includes(tool) && (
                         <FontAwesomeIcon icon={faCheck} />
@@ -125,13 +132,13 @@ export default function NewJobPage() {
           <div className='flex gap-3 justify-end'>
             <Link
               href='..'
-              className='text-white p-3 leading-[initial] flex justify-center items-center rounded-full bg-desaturated-dark-cyan hover:bg-slate-700 focus-within:bg-slate-700 outline-none'
+              className='text-white p-3 leading-[initial] flex justify-center items-center rounded-full bg-desaturated-dark-cyan hover:bg-slate-700 focus-within:bg-slate-700 outline-none lg:text-lg lg:h-[40px]'
             >
               Cancel
             </Link>
             <button
               type='submit'
-              className='text-white p-3 leading-[initial] flex justify-center items-center rounded-full bg-desaturated-dark-cyan hover:bg-slate-700 focus-within:bg-slate-700 outline-none'
+              className='text-white p-3 leading-[initial] flex justify-center items-center rounded-full bg-desaturated-dark-cyan hover:bg-slate-700 focus-within:bg-slate-700 outline-none lg:text-lg lg:h-[40px]'
             >
               Create
             </button>

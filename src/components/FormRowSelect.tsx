@@ -9,12 +9,15 @@ type FormRowSelectProps = {
 const FormRowSelect = ({ label, name, options }: FormRowSelectProps) => {
   return (
     <div className='w-full flex flex-col items-start justify-center gap-2'>
-      <label htmlFor={name} className='text-desaturated-dark-cyan font-bold'>
+      <label
+        htmlFor={name}
+        className='text-desaturated-dark-cyan font-bold lg:text-lg'
+      >
         {label}
       </label>
       <select
         name={name}
-        className='border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-desaturated-dark-cyan w-full h-[32px] '
+        className='border border-slate-300 bg-transparent rounded px-2 py-1 outline-none focus-within:border-desaturated-dark-cyan w-full h-[32px] lg:text-lg '
         required
       >
         <option value=''>--Please choose an option--</option>

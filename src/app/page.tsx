@@ -39,21 +39,21 @@ export default function Home() {
   }, [filters])
 
   return (
-    <main className='min-h-screen py-14 px-6 bg-light-bg-grayish-cyan flex flex-col items-center gap-16'>
+    <main className='min-h-screen py-14 px-6 bg-light-bg-grayish-cyan flex flex-col items-center gap-16 lg:gap-6'>
       {filters.length > 0 && (
-        <div className='w-full relative p-5 pr-6 rounded-md shadow-lg bg-white flex justify-between gap-5 items-center -mt-[7.25rem]'>
+        <div className='w-full relative p-5 pr-6 rounded-md shadow-lg bg-white flex justify-between gap-5 items-center -mt-[7.25rem] lg:max-w-[1110px] lg:py-5 lg:px-10 lg:mb-6'>
           <div className='flex flex-wrap gap-4'>
             {filters.map((filter) => {
               return (
                 <div
                   key={filter.name}
-                  className='flex justify-between items-center rounded-md overflow-hidden h-8'
+                  className='flex justify-between items-center rounded-md overflow-hidden h-[32px] '
                 >
-                  <div className='p-2 bg-light-bg-grayish-cyan text-desaturated-dark-cyan  text-base font-bold'>
+                  <div className='p-2 flex justify-center items-center h-full bg-light-bg-grayish-cyan text-desaturated-dark-cyan  text-base font-bold lg:text-[16px] lg:pt-[5px] lg:pb-0'>
                     {filter.name}
                   </div>
                   <div
-                    className='h-full w-[32px] bg-desaturated-dark-cyan cursor-pointer font-bold flex justify-center items-center '
+                    className='h-full w-[32px] bg-desaturated-dark-cyan cursor-pointer font-bold flex justify-center items-center lg:hover:bg-very-dark-grayish-cyan '
                     onClick={() => toggleFilters(filter)}
                   >
                     <FontAwesomeIcon
@@ -67,7 +67,7 @@ export default function Home() {
             })}
           </div>
           <div
-            className='text-[16px] font-bold text-dark-grayish-cyan'
+            className='text-[16px] font-bold text-dark-grayish-cyan cursor-pointer lg:hover:underline lg:hover:text-desaturated-dark-cyan'
             onClick={() => setFilters([])}
           >
             Clear

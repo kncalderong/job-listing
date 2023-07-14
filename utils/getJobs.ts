@@ -33,6 +33,7 @@ const getJobs = async (filters: FilterType[]) => {
     include: {
       languages: true,
     },
+    orderBy: [{ featured: 'desc' }, { new: 'desc' }],
   })
   return jobs
 }

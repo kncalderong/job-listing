@@ -30,7 +30,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       setIsLoading(true)
       const jobs = await getJobs([...filters])
       setJobs(jobs)
